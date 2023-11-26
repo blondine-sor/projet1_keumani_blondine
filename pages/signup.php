@@ -1,6 +1,26 @@
 <?php
-
-
+session_start();
+var_dump($_SESSION);
+$user_name = '';
+if (isset($_SESSION['signup_form']['user_name'])) {
+    $user_name = $_SESSION['signup_form']['user_name'];
+}
+$email = '';
+if (isset($_SESSION['signup_form']['email'])) {
+    $email = $_SESSION['signup_form']['email'];
+}
+$pwd = '';
+if (isset($_SESSION['signup_form']['pwd'])) {
+    $pwd = $_SESSION['signup_form']['pwd'];
+}
+$fname = '';
+if (isset($_SESSION['signup_form']['fname'])) {
+    $fname = $_SESSION['signup_form']['fname'];
+}
+$lname = '';
+if (isset($_SESSION['signup_form']['lname'])) {
+    $lname = $_SESSION['signup_form']['lname'];
+}
 
 
 
@@ -30,31 +50,36 @@
         </div>
     </nav>
     <h2>Inscription</h2>
-    <form method="post" action="">
+    <form method="post" action="../utils/signupResult.php">
         <fieldset>
             <div class="mb-3">
                 <label for="userName" class="form-label"> Nom d'utilisateur: </label>
                 <input type="text" class="form-control" style="width:30%" id="userName" name="user_name" value="">
+                <p class="text-danger"><?php echo isset($_SESSION['signup_errors']['user_name']) ? $_SESSION['signup_errors']['user_name'] : '' ?></p>
             </div>
 
             <div class="mb-3">
                 <label for="motDePasse" class="form-label"> Mot de Passe: </label>
                 <input type="password" class="form-control" style="width:30%" id="motDePasse" name="pwd" value="">
+                <p class="text-danger"><?php echo isset($_SESSION['signup_errors']['pwd']) ? $_SESSION['signup_errors']['pwd'] : '' ?></p>
             </div>
 
             <div class="mb-3">
                 <label for="e_mail" class="form-label"> Email: </label>
                 <input type="text" class="form-control" style="width:30%" id="e_mail" name="email" value="">
+                <p class="text-danger"><?php echo isset($_SESSION['signup_errors']['email']) ? $_SESSION['signup_errors']['email'] : '' ?></p>
             </div>
 
             <div class="mb-3">
                 <label for="prenom" class="form-label"> Prénom: </label>
                 <input type="text" class="form-control" style="width:30%" id="prenom" name="fname" value="">
+                <p class="text-danger"><?php echo isset($_SESSION['signup_errors']['fname']) ? $_SESSION['signup_errors']['fname'] : '' ?></p>
             </div>
 
             <div class="mb-3">
                 <label for="nom" class="form-label"> Nom: </label>
                 <input type="text" class="form-control" style="width:30%" id="nom" name="lname" value="">
+                <p class="text-danger"><?php echo isset($_SESSION['signup_errors']['lname']) ? $_SESSION['signup_errors']['lname'] : '' ?></p>
             </div>
 
             <div class="col-12">
