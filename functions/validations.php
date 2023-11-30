@@ -7,11 +7,10 @@ function userNameIsValid(string $username): array
     ];
     //$userInDB = getUserByUsername($username);
 
-    if (strlen($username) < 2) {
+    if (strlen($username) <= 2) {
         $result = [
             'isValid' => false,
             'msg' => 'Le nom utilisé est trop court'
-
         ];
     } elseif (strlen($username) > 20) {
         $result = [
@@ -70,12 +69,12 @@ function fnameIsValid($fname)
         "msg" => ""
     ];
 
-    if (strlen($fname) < 3) {
+    if (strlen($fname) <= 3) {
         $result = [
             "isValid" => false,
             "msg" => "Ce prenom est trop court"
         ];
-    } elseif (strlen($fname) > 50) {
+    } elseif (strlen($fname) >= 50) {
         $result = [
             "isValid" => false,
             "msg" => "Ce prenom est trop long"
@@ -90,12 +89,12 @@ function lnameIsValid($lname)
         "msg" => ""
     ];
 
-    if (strlen($lname) < 3) {
+    if (strlen($lname) <= 3) {
         $result = [
             "isValid" => false,
             "msg" => "Le nom est trop court"
         ];
-    } elseif (strlen($lname) > 50) {
+    } elseif (strlen($lname) >= 50) {
         $result = [
             "isValid" => false,
             "msg" => "Le nom est trop long"

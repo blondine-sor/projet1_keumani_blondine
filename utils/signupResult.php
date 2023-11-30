@@ -1,5 +1,8 @@
 <?php
-require_once "../functions/validation.php";
+require_once "../functions/validations.php";
+require_once "../functions/function.php";
+require_once "../config/connexion.php";
+require_once "../functions/userCrud.php";
 session_start();
 
 if (isset($_POST)) {
@@ -11,44 +14,67 @@ if (isset($_POST)) {
     $fieldIsValid = true;
     if (isset($_POST["user_name"])) {
         $validUserName = userNameIsValid($_POST["user_name"]);
-        if ($validUserName == false) {
+
+        if ($validUserName['isValid'] == false) {
             $fieldIsValid = false;
+            // die("je die dans mon valid UserName");
         }
     }
+
     if (isset($_POST["user_name"])) {
         $validEmail = emailIsValid($_POST["email"]);
-        if ($validEmail == false) {
+
+        if ($validEmail['isValid'] == false) {
             $fieldIsValid = false;
+            // die("je die dans mon valid Email");
         }
     }
+
     if (isset($_POST["user_name"])) {
         $validpwd = pwdLenghtValidation($_POST["pwd"]);
-        if ($validpwdl == false) {
+
+        if ($validpwd['isValid'] == false) {
             $fieldIsValid = false;
+            //die("je die dans mon valid pwd");
         }
     }
+
     if (isset($_POST["user_name"])) {
         $validfname = fnameIsValid($_POST["fname"]);
-        if ($validfname == false) {
+
+        if ($validfname['isValid'] == false) {
             $fieldIsValid = false;
+            // die("je die dans mon valid Fname");
         }
     }
     if (isset($_POST["user_name"])) {
         $validlname = lnameIsValid($_POST["lname"]);
-        if ($validlname == false) {
+
+        if ($validlname['isValid'] == false) {
             $fieldIsValid = false;
+            // die("je die dans mon valid Lname");
         }
     }
-    if ($fieldValidation == true) {
+
+    if ($fieldIsValid == true) {
         //envoyer à la DB
-        var_dump($_POST);
-        /* $encodedPwd = encodePwd($_POST['pwd']);
+
+        $encodedPwd = encodePwd($_POST['pwd']);
+        $token = hash('sha256', random_bytes(32));
         $data = [
             'user_name' => $_POST['user_name'],
             'email' => $_POST['email'],
-            'pwd' => $encodedPwd
+            'pwd' => $encodedPwd,
+            'fname' => $_POST['fname'],
+            'lname' => $_POST['lname'],
+            'billing_address_id' => 0,
+            'shipping_address_id' => 0,
+            'token' => $token,
+            'role_id' => 3
         ];
-        $newUser = createUser($data);*/
+        var_dump($data);
+        $_SESSION["session_token"] = $token;
+        $newUser = createUser($data);
     } else {
         // redirect to signup et donner les messages d'erreur
         $_SESSION['signup_errors'] = [
