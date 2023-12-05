@@ -5,7 +5,7 @@ function userNameIsValid(string $username): array
         "isValid" => true,
         "msg" => ""
     ];
-    //$userInDB = getUserByUsername($username);
+    $userInDB = getUserByUsername($username);
 
     if (strlen($username) <= 2) {
         $result = [
@@ -18,12 +18,12 @@ function userNameIsValid(string $username): array
             'msg' => 'Le nom utilisé est trop long'
 
         ];
-    } /*elseif ($userInDB) {
+    } elseif ($userInDB) {
         $result = [
             'isValid' => false,
-            'msg' => 'Le nom d'utilisateur est déjà utilisé'
+            'msg' => 'Le UserName est déjà utilisé'
         ];
-    }*/
+    }
     return $result;
 };
 function emailIsValid($email)

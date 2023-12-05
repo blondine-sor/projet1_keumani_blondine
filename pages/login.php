@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+
+
+
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,10 +36,12 @@
             </ul>
         </div>
     </nav>
-    <form method="post" action="">
+    <form method="post" action="../utils/loginResult.php">
         <label for="user_name">Nom d'utilisateur</label>
         <input id="user_name" type="text" name="user_name" value="">
+        <p class="text-danger"><?php echo isset($_SESSION['login_errors']['error_username']) ? "Le nom d'utilisateur n'existe pas" : '' ?></p>
         <label for="pwd">Mot de passe</label>
         <input id="pwd" type="password" name="pwd" value="">
+        <p class="text-danger"><?php echo isset($_SESSION['login_errors']['error_pwd']) ? "Mot de passe invalide" : '' ?></p>
         <button type="submit" class="btn btn-success">Me connecter</button>
     </form>
