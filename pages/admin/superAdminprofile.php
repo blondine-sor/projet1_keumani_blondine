@@ -6,7 +6,7 @@ session_start();
 $users = getAllUsers();
 $connectedUser = getUserNameByID($_SESSION['auth']['id']);
 $user1 = getUserByUserName($connectedUser['user_name']);
-
+// Affichage du profil du superAdmin
 ?>
 <a href="../../index.php">Acceuil</a>
 <form name="form1" method="post" action="./editSuperAdmin.php">

@@ -1,13 +1,14 @@
 <?php
 
-require_once "/xampp/htdocs/ecomm_1/projet1_keumani_blondine/functions/userCrud.php";
-require_once "/xampp/htdocs/ecomm_1/projet1_keumani_blondine/config/connexion.php";
-require_once "/xampp/htdocs/ecomm_1/projet1_keumani_blondine/functions/validations.php";
+require_once "../config/connexion.php";
+require_once "../functions/userCrud.php";
+require_once "../functions/validations.php";
+
 session_start();
 $connectedUser = getUserNameByID($_SESSION['auth']['id']);
 $user = getUserByUserName($connectedUser['user_name']);
 
-//Update des donnée du superAdmin
+
 if (isset($_POST)) {
     var_dump($_POST);
 
@@ -23,6 +24,7 @@ if (isset($_POST)) {
 
         if ($validEmail['isValid'] == false) {
             $fieldIsValid = false;
+            // die("je die dans mon valid Email");
         }
     }
 
@@ -32,6 +34,7 @@ if (isset($_POST)) {
 
         if ($validfname['isValid'] == false) {
             $fieldIsValid = false;
+            // die("je die dans mon valid Fname");
         }
     }
     if (isset($user["user_name"])) {
@@ -39,11 +42,12 @@ if (isset($_POST)) {
 
         if ($validlname['isValid'] == false) {
             $fieldIsValid = false;
+            // die("je die dans mon valid Lname");
         }
     }
 
     if ($fieldIsValid == true) {
-
+        //envoyer à la DB
 
 
 
@@ -61,10 +65,10 @@ if (isset($_POST)) {
 
         ];
 
-        // Modifie les données de la db
+
         $updateUser = updateUser($data);
     } else {
-        // redirect to profile et donner les messages d'erreur
+        // redirect to signup et donner les messages d'erreur
         $_SESSION['update_errors'] = [
             'user_name' => $validUserName['msg'],
             'email' => $validEmail['msg'],
@@ -77,9 +81,9 @@ if (isset($_POST)) {
         header('Location: ' . $url);
     }
 } else {
-    //redirect vers profile
+    //redirect vers signup
     $url = './superAdminprofile.php';
     header('Location: ' . $url);
 }
 ?>
-<a href="./superAdminprofile.php">Retour</a>
+<a href="../pages/profil.php">Retour</a>
