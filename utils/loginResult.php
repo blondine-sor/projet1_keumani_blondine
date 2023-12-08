@@ -5,6 +5,7 @@ require_once "../functions/userCrud.php";
 require_once "../functions/validations.php";
 require_once "../config/connexion.php";
 session_start();
+$token = hash('sha256', random_bytes(32));
 
 if (isset($_POST)) {
 
@@ -24,14 +25,22 @@ if (isset($_POST)) {
 
     if ($userIsPresent) {
         $enteredPassword = encodePwd($_POST['pwd']);
+        $data = [
+
+            'token' => $token,
+            'id' => $userIsPresent['id'],
+        ];
+        // ajout du token dans la db
+        $addgeneratedToken = updateToken($data);
         if ($userIsPresent['pwd'] == $enteredPassword) {
             $_SESSION['auth'] = [
                 'id' => $userIsPresent['id'],
                 'role_id' => $userIsPresent['role_id'],
                 'token' => $userIsPresent['token']
+
             ];
 
-            var_dump($_POST);
+            var_dump($_SESSION['auth']);
         } else {
             $_SESSION['login_errors'] = [
                 'error_pwd' => true

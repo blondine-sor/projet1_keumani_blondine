@@ -1,27 +1,24 @@
 <?php
-require_once "../functions/validations.php";
-require_once "../functions/function.php";
-require_once "../config/connexion.php";
-require_once "../functions/userCrud.php";
+
+require_once "/xampp/htdocs/ecomm_1/projet1_keumani_blondine/functions/userCrud.php";
+require_once "/xampp/htdocs/ecomm_1/projet1_keumani_blondine/config/connexion.php";
+require_once "/xampp/htdocs/ecomm_1/projet1_keumani_blondine/functions/validations.php";
 session_start();
+$connectedUser = getUserNameByID($_SESSION['auth']['id']);
+$user = getUserByUserName($connectedUser['user_name']);
+
 
 if (isset($_POST)) {
+    var_dump($_POST);
 
-    $_SESSION["signup_form"] = $_POST;
+    $_SESSION["update_form"] = $_POST;
 
-    unset($_SESSION['signup_errors']);
+    unset($_SESSION['update_errors']);
 
     $fieldIsValid = true;
-    if (isset($_POST["user_name"])) {
-        $validUserName = userNameIsValid($_POST["user_name"]);
 
-        if ($validUserName['isValid'] == false) {
-            $fieldIsValid = false;
-            // die("je die dans mon valid UserName");
-        }
-    }
 
-    if (isset($_POST["user_name"])) {
+    if (isset($user["user_name"])) {
         $validEmail = emailIsValid($_POST["email"]);
 
         if ($validEmail['isValid'] == false) {
@@ -30,16 +27,8 @@ if (isset($_POST)) {
         }
     }
 
-    if (isset($_POST["user_name"])) {
-        $validpwd = pwdLenghtValidation($_POST["pwd"]);
 
-        if ($validpwd['isValid'] == false) {
-            $fieldIsValid = false;
-            //die("je die dans mon valid pwd");
-        }
-    }
-
-    if (isset($_POST["user_name"])) {
+    if (isset($user["user_name"])) {
         $validfname = fnameIsValid($_POST["fname"]);
 
         if ($validfname['isValid'] == false) {
@@ -47,7 +36,7 @@ if (isset($_POST)) {
             // die("je die dans mon valid Fname");
         }
     }
-    if (isset($_POST["user_name"])) {
+    if (isset($user["user_name"])) {
         $validlname = lnameIsValid($_POST["lname"]);
 
         if ($validlname['isValid'] == false) {
@@ -59,25 +48,27 @@ if (isset($_POST)) {
     if ($fieldIsValid == true) {
         //envoyer à la DB
 
-        $encodedPwd = encodePwd($_POST['pwd']);
+
 
         $data = [
-            'user_name' => $_POST['user_name'],
+
+            'user_name' => $user['user_name'],
             'email' => $_POST['email'],
-            'pwd' => $encodedPwd,
+            'pwd' => $user['pwd'],
             'fname' => $_POST['fname'],
             'lname' => $_POST['lname'],
             'billing_address_id' => 1,
             'shipping_address_id' => 1,
-            'token' => "",
-            'role_id' => 3
+            'role_id' => $user['role_id'],
+            'id' => $user['id']
+
         ];
         var_dump($data);
-        $_SESSION["session_token"] = $token;
-        $newUser = createUser($data);
+
+        $updateUser = updateUser($data);
     } else {
         // redirect to signup et donner les messages d'erreur
-        $_SESSION['signup_errors'] = [
+        $_SESSION['update_errors'] = [
             'user_name' => $validUserName['msg'],
             'email' => $validEmail['msg'],
             'pwd' => $validpwd['msg'],
@@ -85,14 +76,13 @@ if (isset($_POST)) {
             'lname' => $validlname['msg']
 
         ];
-        $url = '../pages/signup.php';
+        $url = './superAdminprofile.php';
         header('Location: ' . $url);
     }
 } else {
     //redirect vers signup
-    $url = '../pages/signup.php';
+    $url = './superAdminprofile.php';
     header('Location: ' . $url);
 }
-
 ?>
-<a href="../index.php">Retour</a>
+<a href="./superAdminprofile.php">Retour</a>

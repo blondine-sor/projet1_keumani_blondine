@@ -1,4 +1,17 @@
 <?php
+require_once "./athentification/authenticated.php";
+require_once "./functions/userCrud.php";
+require_once "./config/connexion.php";
+session_start();
+if (isset($_SESSION['auth'])) {
+    $id = $_SESSION['auth']['id'];
+    $athenticated = authenticated($_SESSION['auth']);
+    $name = getUserNameByID($id);
+    $role = $_SESSION['auth']['role_id'];
+    $url = userIsAdmin($role);
+} else {
+}
+
 
 
 
@@ -33,8 +46,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="./pages/login.php">Se Connecter</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="./pages/admin/collaborateur.php">Collaborateurs</a>
+                    <a class="nav-link" href="<?php echo isset($_SESSION['auth']['role_id']) ? $url : "" ?>">Profils</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>
@@ -42,13 +56,22 @@
             </ul>
         </div>
     </nav>
+
+    <h3 style="float: right;">
+        <a class="nav-link" href=#><?php echo isset($_SESSION['auth']) ? $name['user_name'] : "" ?></a>
+    </h3>
+
     <form>
         <fieldset>
             <legend>
                 <p class="text-primary">Bienvenue dans la librairie du Soleil.</p>
             </legend>
 
+
         </fieldset>
+    </form>
+    <form method="post" action="./utils/deconnexion.php">
+        <button type="submit" class="btn btn-danger">Déconnexion</button>
     </form>
 </body>
 
