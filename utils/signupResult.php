@@ -73,7 +73,6 @@ if (isset($_POST)) {
             'role_id' => 3
         ];
         var_dump($data);
-        $_SESSION["session_token"] = $token;
         $newUser = createUser($data);
     } else {
         // redirect to signup et donner les messages d'erreur

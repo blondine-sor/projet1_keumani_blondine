@@ -20,3 +20,13 @@ function userIsAdmin($data)
     }
     return $url;
 }
+
+function productManagement($data)
+{
+    if (intval($data) == 1 || intval($data) == 2) {
+        $url = "./products/addproducts.php";
+    } else {
+        $url = "./products/products.php";
+    }
+    return $url;
+}

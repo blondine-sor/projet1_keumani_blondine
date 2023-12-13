@@ -8,6 +8,7 @@ if (isset($_SESSION['auth'])) {
     $athenticated = authenticated($_SESSION['auth']);
     $name = getUserNameByID($id);
     $role = $_SESSION['auth']['role_id'];
+    $product = productManagement($role);
     $url = userIsAdmin($role);
 } else {
 }
@@ -48,7 +49,10 @@ if (isset($_SESSION['auth'])) {
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo isset($_SESSION['auth']['role_id']) ? $url : "" ?>">Profils</a>
+                    <a class="nav-link" href="<?php echo isset($_SESSION['auth']['role_id']) ? $url : "./pages/login.php" ?>">Profils</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href=" <?php echo isset($_SESSION['auth']['role_id']) ? $product : "./products/products.php" ?>">Produits</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>
@@ -56,7 +60,6 @@ if (isset($_SESSION['auth'])) {
             </ul>
         </div>
     </nav>
-
     <h3 style="float: right;">
         <a class="nav-link" href=#><?php echo isset($_SESSION['auth']) ? $name['user_name'] : "" ?></a>
     </h3>
