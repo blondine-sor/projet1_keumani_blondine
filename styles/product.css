@@ -1,0 +1,17 @@
+body {
+  background-color: lightsalmon;
+  font-family: cursive;
+  color: purple;
+}
+legend {
+  font-size: larger;
+  text-align: center;
+  color: chartreuse;
+}
+textarea {
+  width: 350px;
+  height: 500px;
+}
+button {
+  color: crimson;
+}
