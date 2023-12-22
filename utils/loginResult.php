@@ -40,7 +40,7 @@ if (isset($_POST)) {
 
             ];
 
-            var_dump($_SESSION['auth']);
+            header('Location: ../index.php');
         } else {
             $_SESSION['login_errors'] = [
                 'error_pwd' => true

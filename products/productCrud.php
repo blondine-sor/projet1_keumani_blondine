@@ -35,3 +35,42 @@ function getAllProducts()
     };
     return $productData;
 }
+
+function getProductByID($id)
+{
+
+    global $conn;
+
+    $query = "SELECT * FROM product WHERE product.id = '" . $id . "';";
+
+    $result = mysqli_query($conn, $query);
+
+    // avec fetch row : tableau indexé
+    $data = mysqli_fetch_assoc($result);
+    return $data;
+}
+
+function updateProduct(array $data)
+{
+    global $conn;
+
+    $query = "UPDATE product SET name = ?,quantity = ?, price = ?, img_url = ?, description = ?
+            WHERE product.id = ?";
+
+    if ($stmt = mysqli_prepare($conn, $query)) {
+
+        mysqli_stmt_bind_param(
+            $stmt,
+            "sidssi",
+            $data['name'],
+            $data['quantity'],
+            $data['price'],
+            $data['img_url'],
+            $data['description'],
+            $data['id']
+        );
+
+        /* Exécution de la requête */
+        $result = mysqli_stmt_execute($stmt);
+    }
+}

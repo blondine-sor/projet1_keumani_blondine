@@ -14,9 +14,6 @@ $user1 = getUserByUserName($connectedUser['user_name']);
         <label for="userName">Nom d'Utilisateurs: </label>
         <?php echo $connectedUser['user_name']; ?>
         <p></p>
-        <label for="password">Mot de passe:</label>
-        <input type="password" name="pwd" id="password" value="<?php echo $user1['pwd']; ?>">
-        <p></p>
         <label for="couriel">Email:</label>
         <input type="text" name="email" id="couriel" value="<?php echo $user1['email']; ?>">
         <p><?php echo isset($_SESSION['update_errors']['email']) ? $_SESSION['update_errors']['email'] : '' ?></p>

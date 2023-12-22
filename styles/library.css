@@ -1,0 +1,28 @@
+body {
+  background-color: lavenderblush;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.container {
+  background-color: white;
+  border: 4px;
+}
+.title {
+  color: gold;
+  font-family: fantasy;
+  border: salmon 1px;
+}
+#content {
+  border: solid black 2px;
+}
+.btnCommander {
+  background-color: pink;
+  float: right;
+}
+.heading {
+  color: gold;
+  font-size: 100px;
+  text-align: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-style: italic;
+  font-weight: bold;
+}

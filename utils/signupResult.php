@@ -72,8 +72,10 @@ if (isset($_POST)) {
             'token' => "",
             'role_id' => 3
         ];
-        var_dump($data);
+
         $newUser = createUser($data);
+        $url = "../pages/login.php";
+        header('Location:' . $url);
     } else {
         // redirect to signup et donner les messages d'erreur
         $_SESSION['signup_errors'] = [

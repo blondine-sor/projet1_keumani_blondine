@@ -34,8 +34,8 @@ session_start();
                     <a class="nav-link" href="./signup.php">S'enregistrer</a>
                 </li>
             </ul>
-        </div>
     </nav>
+
     <form method="post" action="../utils/loginResult.php">
         <label for="user_name">Nom d'utilisateur</label>
         <input id="user_name" type="text" name="user_name" value="">

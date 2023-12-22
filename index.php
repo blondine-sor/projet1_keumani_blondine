@@ -55,7 +55,7 @@ if (isset($_SESSION['auth'])) {
                     <a class="nav-link" href=" <?php echo isset($_SESSION['auth']['role_id']) ? $product : "./products/products.php" ?>">Produits</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
+                    <a class="nav-link " href="./panier/panier.php"><img src="./Saved Pictures/panier.png" class="img-circle" width="80" height="70" /></a>
                 </li>
             </ul>
         </div>
@@ -69,7 +69,7 @@ if (isset($_SESSION['auth'])) {
             <legend>
                 <p class="text-primary">Bienvenue dans la librairie du Soleil.</p>
             </legend>
-
+            <img src="./Saved Pictures/imageAccueil.jpg" class="img-circle" width="400" height="400" style="float: right;" />
 
         </fieldset>
     </form>
