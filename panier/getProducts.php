@@ -20,20 +20,16 @@ if (isset($_POST)) {
             'price' => $_POST['price' . $i],
         ];
         if (!empty($data['quantity'])) {
-            $shoppingCart[] = $data;
+            $shoppingCart[$data['id']] = $data;
         }
     }
-    var_dump($shoppingCart);
+
     // combien de tableau present dans le ShoppingCart
     $imax = count($shoppingCart);
 
     // garde le panier de l'utilisateur
-    $_SESSION['panier'] = [
-        'user_id' => $user_id,
-        'shoppingCart' => $shoppingCart
-    ];
-
-    var_dump($_SESSION['panier']['shoppingCart']);
+    $_SESSION['panier'] = $shoppingCart;
+    header('Location: ./panier/panier.php');
 }
 ?>
 <a href="../index.php">Accueil</a>

@@ -7,7 +7,7 @@ session_start();
 $connectedUser = getUserNameByID($_SESSION['auth']['id']);
 $user = getUserByUserName($connectedUser['user_name']);
 
-//Update des donnée du superAdmin
+//Update des données du superAdmin
 if (isset($_POST)) {
     var_dump($_POST);
 
@@ -63,6 +63,8 @@ if (isset($_POST)) {
 
         // Modifie les données de la db
         $updateUser = updateUser($data);
+        $url = './superAdminprofile.php';
+        header('Location: ' . $url);
     } else {
         // redirect to profile et donner les messages d'erreur
         $_SESSION['update_errors'] = [

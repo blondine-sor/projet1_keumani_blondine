@@ -38,7 +38,7 @@ if (isset($_SESSION['auth'])) {
 <form method="post" action="../panier/getProducts.php">
     <div class="container">
         <?php foreach ($allProducts as $product) {
-
+            //Affichage de chaque produit avec un foreach. J'aloute l'id de chaque produit sur chaque name pour faire la difference
         ?>
             <div class="row" id="content">
                 <div class="col-md-3">

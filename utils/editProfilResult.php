@@ -64,6 +64,8 @@ if (isset($_POST)) {
             'id' => $user['id']
 
         ];
+        $url = './superAdminprofile.php';
+        header('Location: ' . $url);
 
 
         $updateUser = updateUser($data);

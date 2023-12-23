@@ -43,9 +43,9 @@ $user1 = getUserByUserName($connectedUser['user_name']);
                         } ?>
         </select>
         New Role:
-        <input type="radio" name="role_id" id="new_role" value="1">1
-        <input type="radio" name="role_id" id="new_role" value="2">2
-        <input type="radio" name="role_id" id="new_role" value="3">3
+        <input type="radio" name="role_id" id="new_role" value="1">superAdmin
+        <input type="radio" name="role_id" id="new_role" value="2">Admin
+        <input type="radio" name="role_id" id="new_role" value="3">Client
         <br>
         <br>
         <button type="submit">Modifier</button>

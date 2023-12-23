@@ -44,8 +44,9 @@ if (isset($_POST)) {
             'img_url' => $_POST['img_url'],
             'description' => $_POST['description']
         ];
-        var_dump($data);
         $newProduct = addProduct($data);
+        $url = "../panier/panier.php";
+        header('Location:' . $url);
     } else {
         $_SESSION['errors'] = [
             'name' => $productNameisValid['msg'],

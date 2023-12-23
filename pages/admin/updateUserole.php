@@ -13,4 +13,5 @@ if (isset($_POST)) {
     $updatedUserRole = updateUserRole($data);
 }
 ?>
+<h1> User Updated!!!</h1>
 <a href="./superAdminprofile.php">Retour</a>
