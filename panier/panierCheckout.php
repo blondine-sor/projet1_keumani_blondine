@@ -21,14 +21,15 @@ if (isset($_SESSION['panier'])) {
     $date = date('Y-m-d');
     //Creation de la reference
     $ref = $userName['user_name'] . $date . $totalQuantityOrder;
-    var_dump($ref);
     // Creation du user_order pour la confirmation du payment
-    $_SESSION['user_order'] = [
+    $user_order = [
         'ref' => $ref,
         'date' => $date,
         'total' => $totalPrixOrder,
         'user_id' => $user_id
     ];
+
+    createUserOrder($user_order);
 }
 
 // Creation de la facture

@@ -25,14 +25,11 @@ if (isset($_SESSION['auth'])) {
             }
         }
 
-        // combien de tableau present dans le ShoppingCart
-        $imax = count($shoppingCart);
-
         // garde le panier de l'utilisateur
         $_SESSION['panier'] = $shoppingCart;
-        header('Location: ./panier/panier.php');
+        header('Location:./panier.php');
     } else {
-        header('Location: ./products/products.php');
+        header('Location: ../products/products.php');
     }
 } else {
     header('Location: ../pages/login.php');
