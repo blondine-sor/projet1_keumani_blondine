@@ -3,7 +3,6 @@
 function authenticated(array $data)
 {
     if ($data) {
-        echo "User Connected";
     } else {
         echo "";
     }

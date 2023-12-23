@@ -7,7 +7,6 @@ session_start();
 $allProducts = getAllProducts();
 
 $numProducts = count($allProducts);
-var_dump($numProducts);
 $_SESSION['nombreProduit'] = $numProducts;
 if (isset($_SESSION['auth'])) {
     $id = $_SESSION['auth']['id'];

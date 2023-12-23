@@ -60,5 +60,3 @@ if (isset($_POST)) {
 
     header('Location: ' . $url);
 }
-?>
-<a href="../index.php">Retour</a>

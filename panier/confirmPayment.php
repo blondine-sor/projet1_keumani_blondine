@@ -6,7 +6,7 @@ session_start();
 if (isset($_SESSION['user_order'])) {
     $user_id = $_SESSION['auth']['id'];
     $user_order = $_SESSION['user_order'];
-    //createUserOrder($user_order);
+    createUserOrder($user_order);
     $order_id = getUserOrderId($user_id);
 
     $orderHasProduct = $_SESSION['panier'];
@@ -20,6 +20,8 @@ if (isset($_SESSION['user_order'])) {
         ];
         createOrder($data);
     }
+
+    unset($_SESSION['panier']);
 }
 ?>
 <h1>Payment Successfull</h1>
