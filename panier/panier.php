@@ -14,9 +14,9 @@ if (isset($_SESSION['auth'])) {
     }
     //Affichage du panier
 ?>
-
-    <table name="Panier" border="2">
-        <thead>
+    <link rel="stylesheet" href="../styles/librairie2.css">
+    <table class="panier" border="2">
+        <thead class="head">
             <tr>
                 <td>Nom Produits</td>
                 <td>Quantité</td>

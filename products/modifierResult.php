@@ -10,8 +10,8 @@ if (isset($_POST)) {
     $validation = true;
 
     if (!empty($_POST['name'])) {
-        $productNameisValid = ProductNameIsValid($_POST['name']);
-        if ($productNameisValid["isValid"] == false) {
+        if (strlen($_POST['name']) >= 20 || strlen($_POST['name']) <= 2) {
+            $invalideName = false;
             $validation = false;
         }
     }
@@ -44,12 +44,12 @@ if (isset($_POST)) {
             'img_url' => $_POST['img_url'],
             'description' => $_POST['description']
         ];
-        $newProduct = addProduct($data);
+        $newProduct = updateProduct($data);
         $url = "../products/products.php";
         header('Location:' . $url);
     } else {
         $_SESSION['errors'] = [
-            'name' => $productNameisValid['msg'],
+            'name' => $invalideName,
             'quantity' => $quantityFormatIsValid['msg'],
             'price' => $priceFormatIsValid['msg'],
             'img_url' => $urlVide,

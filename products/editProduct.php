@@ -1,7 +1,10 @@
 <?php
 require_once "../config/connexion.php";
 require_once "../functions/userCrud.php";
+require_once "../products/productCrud.php";
+
 session_start();
+$allproducts = getAllProducts();
 
 
 ?>
@@ -22,3 +25,24 @@ session_start();
         </ul>
     </div>
 </nav>
+<style>
+    body {
+        background-image: url('../Saved\ Pictures/newback.jpg');
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+</style>
+<form action="./modifyProduct.php" method="post">
+    <h2>Choisissez Le Produit</h2>
+    <select name="name">
+
+        <?php foreach ($allproducts as $product) { ?>
+            <option>
+                <?php echo $product['name'] ?>
+            </option>
+        <?php } ?>
+
+    </select>
+    <button type=submit>Modifier</button>
+</form>
+</div>

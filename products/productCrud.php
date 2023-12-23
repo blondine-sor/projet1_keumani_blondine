@@ -50,6 +50,20 @@ function getProductByID($id)
     return $data;
 }
 
+function getProductByName($name)
+{
+
+    global $conn;
+
+    $query = "SELECT * FROM product WHERE product.name = '" . $name . "';";
+
+    $result = mysqli_query($conn, $query);
+
+    // avec fetch row : tableau indexé
+    $data = mysqli_fetch_assoc($result);
+    return $data;
+}
+
 function updateProduct(array $data)
 {
     global $conn;

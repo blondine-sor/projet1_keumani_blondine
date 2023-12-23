@@ -1,3 +1,17 @@
 body {
-  background-image: url("../Saved\ Pictures/imageAccueil.jpg");
+  background-image: url("../Saved\ Pictures/imagefinal.jpg");
+}
+.panier {
+  background-color: aliceblue;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.head {
+  color: crimson;
+  font-size: larger;
+  font-weight: bold;
+}
+a {
+  font-weight: 900;
+  font-size: larger;
+  color: cornsilk;
 }

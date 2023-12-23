@@ -20,7 +20,7 @@ session_start();
                 <a class="nav-link " href="./products.php">Produits</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link " href="./editProducts.php">Modifier Produit</a>
+                <a class="nav-link " href="./editProduct.php">Modifier Produit</a>
             </li>
         </ul>
     </div>
